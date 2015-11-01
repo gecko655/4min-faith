@@ -1,4 +1,5 @@
 # 4min-faith
+[![Build Status](https://travis-ci.org/gecko655/4min-faith.svg)](https://travis-ci.org/gecko655/4min-faith)
 
 4分教信者支援ツール
 
