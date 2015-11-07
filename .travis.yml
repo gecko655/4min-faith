@@ -7,7 +7,7 @@ services:
   - docker
  
 before_install:
-  - ./build.sh
+  - ./build.sh test
   - ./run.sh
 
 script:
