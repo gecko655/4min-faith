@@ -1,14 +1,12 @@
 sudo: required
-
 language: ruby
 rvm: 2.2.0
-
 services:
-  - docker
- 
+- docker
 before_install:
-  - ./build.sh test
-  - ./run.sh
-
+- openssl aes-256-cbc -K $encrypted_45674f93e678_key -iv $encrypted_45674f93e678_iv
+  -in secretenv_test.enc -out secretenv_test -d
+- "./build.sh test"
+- "./run.sh"
 script:
-  - bundle exec rake test
+- bundle exec rake test
