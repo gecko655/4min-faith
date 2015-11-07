@@ -1,7 +1,7 @@
 FROM ruby
 MAINTAINER gecko655 <aqwsedrft1234@yahoo.co.jp>
 
-RUN apt-get update && apt-get -y upgrade && apt-get -y install rsyslog vim
+RUN apt-get update && apt-get -y upgrade && apt-get -y install rsyslog vim libopencv-dev
 WORKDIR /usr/
 RUN touch /tmp/cronlog.log
 COPY secretenv /usr/
