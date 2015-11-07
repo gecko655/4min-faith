@@ -4,4 +4,3 @@ if [ $# -gt 0 ] && [ $1 = test ]; then
 fi
 cp $SECRETENV_PATH secretenv
 docker build $BUILD_ARG -t gecko655/4min-faith .
-rm secretenv
