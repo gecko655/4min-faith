@@ -14,13 +14,13 @@ def facedetect(image_path)
   faces = Std::Vector.new(cv::Rect)
 
   cv::cvt_color(frame,frame_gray, cv::COLOR_BGR2GRAY)
-  cv::equalizeHist( frame_gray, frame_gray );
+  cv::equalizeHist( frame_gray, frame_gray )
 
-  face_cascade.detect_multi_scale( frame_gray, faces, 1.1, 2, );
+  face_cascade.detect_multi_scale( frame_gray, faces, 1.1, 2, )
   puts faces.size
-
   faces.each_with_index do |face, i|
-    cv::imwrite("/tmp/test_"+i.to_s+".jpg",face)
+    face_image = frame.block(face)
+    cv::imwrite("/tmp/test_"+i.to_s+".jpg",face_image)
   end
 end
 
