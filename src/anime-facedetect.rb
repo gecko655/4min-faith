@@ -20,7 +20,7 @@ def facedetect(image_path)
   puts faces.size
 
   faces.each_with_index do |face, i|
-    cv::imwrite("/tmp/test_"+i+".jpg",face)
+    cv::imwrite("/tmp/test_"+i.to_s+".jpg",face)
   end
 end
 
