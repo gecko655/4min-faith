@@ -4,7 +4,7 @@ include OpenCV
 def facedetect(image_path)
   return unless image_path.kind_of? String
   #depends on openCV installation so copied into the directory for easier access
-  face_cascade_name = File.new("./cascade/lbpcascade_animeface.xml")
+  face_cascade_name = "./cascade/lbpcascade_animeface.xml"
 
   frame_gray =  cv::Mat.new
   face_cascade = cv::CascadeClassifier.new
