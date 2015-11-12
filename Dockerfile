@@ -14,17 +14,17 @@ RUN touch /tmp/cronlog.log
 
 COPY cascade cascade
 
-COPY secretenv .
+COPY secretenv secretenv
 RUN (crontab -l; cat secretenv) | crontab
 RUN rm secretenv
 
-COPY Gemfile .
+COPY Gemfile Gemfile
 RUN bundle config build.ruby-opencv --with-opencv-dir=/usr/OpenCV/build/bin \
     && bundle install 
 COPY test test
-COPY Rakefile .
+COPY Rakefile Rakefile
 
-COPY crontab.config .
+COPY crontab.config crontab.config
 RUN (crontab -l; cat crontab.config ) | crontab
 
 COPY src src
