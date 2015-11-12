@@ -6,7 +6,10 @@ RUN apt-get update \
     && apt-get -y upgrade \
     && apt-get -y dist-upgrade \
     && apt-get -y autoremove \
-    && apt-get -y install rsyslog vim \
+    && apt-get -y install rsyslog \
+    && apt-get -y install vim \
+    && apt-get -y install cmake\
+    && apt-get -y install g++\
     && apt-get -y install ocl-icd-libopencl1 \
     && apt-get -y install libopencv-dev
 
@@ -19,8 +22,7 @@ RUN (crontab -l; cat secretenv) | crontab
 RUN rm secretenv
 
 COPY Gemfile Gemfile
-RUN bundle config build.ruby-opencv --with-opencv-dir=/usr/OpenCV/build/bin \
-    && bundle install 
+RUN bundle install
 COPY test test
 COPY Rakefile Rakefile
 

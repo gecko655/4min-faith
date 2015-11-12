@@ -4,5 +4,5 @@ gem 'rake'
 gem 'nokogiri'
 gem 'twitter'
 gem 'test-unit'
-gem 'ruby-opencv'
+gem 'ropencv'
 
