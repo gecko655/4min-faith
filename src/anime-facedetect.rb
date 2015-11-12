@@ -19,7 +19,7 @@ def facedetect(image_path)
   face_cascade.detect_multi_scale( frame_gray, faces, 1.1, 2, );
   puts faces.size
 
-  faces.each_index do |face, i|
+  faces.each_with_index do |face, i|
     cv::imwrite("/tmp/test_"+i+".jpg",face)
   end
 end
