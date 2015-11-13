@@ -19,6 +19,7 @@ def facedetect(image_path)
   face_cascade.detect_multi_scale( frame_gray, faces, 1.1, 2, )
   puts faces.size
   faces.each_with_index do |face, i|
+    next if face.height<50||face.height>200||face.width<50||face.width>200
     face_image = frame.block(face)
     cv::imwrite("/tmp/test_"+i.to_s+".jpg",face_image)
   end
