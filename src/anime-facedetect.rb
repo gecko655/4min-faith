@@ -2,7 +2,7 @@ require 'ropencv'
 include OpenCV
 
 def facedetect(image_path)
-  return unless image_path.kind_of? String
+  return false unless image_path.kind_of? String
   #depends on openCV installation so copied into the directory for easier access
   face_cascade_name = "./cascade/lbpcascade_animeface.xml"
 
@@ -23,5 +23,6 @@ def facedetect(image_path)
     face_image = frame.block(face)
     cv::imwrite("/tmp/test_"+i.to_s+".jpg",face_image)
   end
+  return true
 end
 
