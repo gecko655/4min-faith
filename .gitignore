@@ -48,3 +48,6 @@ crashlytics-build.properties
 Gemfile.lock
 secretenv_test
 secretenv_release
+
+src/experimental
+testdata
