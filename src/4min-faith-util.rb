@@ -54,13 +54,14 @@ class FourMinute
 
   def self.update_with_message(mes, query=/([^「]限定勧誘|新部員)/)
     f = FourMinute.new
-    image = File.open f.fetch_gacha_image(query)
+    image_path = f.fetch_gacha_image(query)
+    image = File.open image_path
     TwitterUtil.new.update_with_media mes, image
-    return image
+    return image_path
   end
 
-  def self.update_profile_image(rowimage, index=0)
-    face_files=facedetect(rowimage)
+  def self.update_profile_image(rowimage_path, index=0)
+    face_files=facedetect(rowimage_path)
     TwitterUtil.new.update_profile_image(face_files[index])
   end
 end
