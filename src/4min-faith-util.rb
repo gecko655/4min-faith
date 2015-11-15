@@ -6,6 +6,7 @@ require 'twitter'
 require 'tempfile'
 require 'time'
 require 'date'
+require_relative 'twitter-util'
 
 class FourMinute
 
