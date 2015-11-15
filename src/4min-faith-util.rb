@@ -7,6 +7,7 @@ require 'tempfile'
 require 'time'
 require 'date'
 require_relative 'twitter-util'
+require_relative 'anime-facedetect'
 
 class FourMinute
 
