@@ -50,20 +50,16 @@ class FourMinute
     end
   end
 
-  def get_client()
-    Twitter::REST::Client.new do |config|
-      config.consumer_key        = ENV['consumer_key']
-      config.consumer_secret     = ENV['consumer_secret']
-      config.access_token        = ENV['access_token']
-      config.access_token_secret = ENV['access_token_secret']
-    end
-  end
   def self.update_with_message(mes, query=/([^「]限定勧誘|新部員)/)
     f = FourMinute.new
-    client = f.get_client()
     image = File.open f.fetch_gacha_image(query)
-    client.update_with_media mes, image
+    TwitterUtil.new.update_with_media mes, image
+    return image
   end
 
+  def self.update_profile_image(rowimage, index=0)
+    face_files=facedetect(rowimage)
+    TwitterUtil.new.update_profile_image(face_files[index])
+  end
 end
 

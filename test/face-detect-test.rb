@@ -19,6 +19,6 @@ class FaceDetectTest < Test::Unit::TestCase
 
   def test_1
     path = FourMinute.new.fetch_gacha_image(/(イベント開催)/)
-    assert(facedetect(path))
+    assert(facedetect(path).size>0)
   end
 end
