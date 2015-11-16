@@ -12,6 +12,7 @@ RUN apt-get update \
     && apt-get -y install g++\
     && apt-get -y install ocl-icd-libopencl1 \
     && apt-get -y install libopencv-dev
+RUN ln /dev/null /dev/raw1394 #for suppress error
 
 RUN touch /tmp/cronlog.log
 
@@ -31,4 +32,4 @@ RUN (crontab -l; cat crontab.config ) | crontab
 
 COPY src src
     
-CMD rsyslogd && cron && tail -f /var/log/syslog /tmp/cronlog.log
+CMD rsyslogd && sh -c 'ln /dev/null /dev/raw1394'; cron && tail -f /var/log/syslog /tmp/cronlog.log
