@@ -27,7 +27,7 @@ def facedetect(image_path,output_basename='test')
       face_files << File.new(output_path)
     end
   end
-
+  raise "No face detected" if face_files.empty?
   return face_files
 end
 

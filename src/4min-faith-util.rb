@@ -45,7 +45,9 @@ class FourMinute
     page = Nokogiri::HTML(resp.body)
     imgurl = page.css('.ml40').select{|mes| mes.text.match regex}[0]
                  .parent.next_element.css('img')[0]['src']
-    image_string = Net::HTTP::get(URI('http:'+imgurl))
+    imgurl = 'http:'+imgurl
+    puts 'Image found: ' +imgurl
+    image_string = Net::HTTP::get(URI(imgurl))
     Tempfile.open('tmp.png') do |fo|
       fo.write image_string
       fo.path
