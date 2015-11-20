@@ -13,7 +13,16 @@ class TwitterUtil
     @client.update_with_media mes, image
   end
   def update_profile_image(image)
-    @client.update_profile_image(image)
+    for f in 1..3
+      begin
+        @client.update_profile_image(image)
+        break
+      rescue Twitter::Error::BadRequest => e
+        raise e if f==3
+        print e
+        print 'update_profile_image failed. try again'
+      end
+    end
   end
 
 
