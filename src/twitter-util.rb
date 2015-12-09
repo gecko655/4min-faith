@@ -1,5 +1,5 @@
 class TwitterUtil
-  @tag = ' #スクフェス #ラブライブ #llsif #lovelive '
+  TAG = ' #スクフェス #ラブライブ #llsif #lovelive '
   @client
   def initialize()
     @client = Twitter::REST::Client.new do |config|
@@ -11,7 +11,7 @@ class TwitterUtil
   end
 
   def update_with_media(mes, image)
-    @client.update_with_media mes+@tag, image
+    @client.update_with_media mes+TAG, image
   end
   def update_profile_image(image)
     for f in 1..3
