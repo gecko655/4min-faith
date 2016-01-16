@@ -54,12 +54,15 @@ class FourMinute
     end
   end
 
-  def self.update_with_message(mes, query=/([^「]限定勧誘|新部員)/)
+  def self.get_gacha_image(query=/([^「]限定勧誘|新部員)/)
     f = FourMinute.new
-    image_path = f.fetch_gacha_image(query)
+    f.fetch_gacha_image(query)
+  end
+
+  def self.update_with_message(image_path, mes)
+    raise unless image_path.kind_of? String
     image = File.open image_path
     TwitterUtil.new.update_with_media mes, image
-    return image_path
   end
 
   def self.update_profile_image(rowimage_path, index=0)
