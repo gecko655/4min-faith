@@ -17,9 +17,8 @@ def facedetect(image_path,output_basename='test')
   cv::equalizeHist( frame_gray, frame_gray )
 
   face_cascade.detect_multi_scale( frame_gray, faces, 1.1, 2, )
-
   face_files = []
-  faces.each_with_index do |face, i|
+  faces.sort_by { |f| f.height+f.width}.reverse.each_with_index do |face, i|
     next if face.height<50||face.height>200||face.width<50||face.width>200
     face_image = frame.block(face)
     output_path = "/tmp/"+output_basename+"_"+i.to_s+".png"
